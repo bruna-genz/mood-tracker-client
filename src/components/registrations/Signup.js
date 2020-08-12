@@ -11,6 +11,10 @@ class Signup extends Component {
       password_confirmation: '',
       errors: '',
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.redirect = this.redirect.bind(this);
+    this.handleErrors = this.handleErrors.bind(this);
   }
 
   handleChange(event) {
