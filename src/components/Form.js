@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { SIGNUP_URL, LOGIN_URL } from '../constants';
 
 const Form = props => {
@@ -8,7 +8,8 @@ const Form = props => {
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [errors, setErrors] = useState('');
-  const { type, history, handleLogin } = props;
+  const { type, handleLogin } = props;
+  const history = useHistory();
 
   // componentWillMount() {
   //   return this.props.loggedInStatus ? this.redirect() : null;

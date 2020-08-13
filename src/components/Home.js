@@ -1,13 +1,15 @@
 import React from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const Home = (props) => {
+  const history = useHistory();
+
   const handleClick = () => {
     axios.delete('http://localhost:3001/logout', { withCredentials: true })
       .then(response => {
         props.handleLogout();
-        props.history.push('/');
+        history.push('/');
       })
       .catch(error => console.log(error));
   };

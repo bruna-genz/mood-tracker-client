@@ -42,22 +42,22 @@ const App = () => {
           <Route
             exact
             path="/"
-            render={props => (
-              <Home {...props} handleLogout={handleLogout} loggedInStatus={isLoggedIn} />
+            render={() => (
+              <Home handleLogout={handleLogout} loggedInStatus={isLoggedIn} />
             )}
           />
           <Route
             exact
             path="/login"
-            render={props => (
-              <Login {...props} handleLogin={handleLogin} loggedInStatus={isLoggedIn} />
+            render={() => (
+              <Login handleLogin={handleLogin} loggedInStatus={isLoggedIn} />
             )}
           />
           <Route
             exact
             path="/signup"
-            render={props => (
-              <Signup {...props} handleLogin={handleLogin} loggedInStatus={isLoggedIn} />
+            render={() => (
+              <Signup handleLogin={handleLogin} loggedInStatus={isLoggedIn} />
             )}
           />
         </Switch>
