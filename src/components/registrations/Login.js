@@ -1,12 +1,11 @@
 import React from 'react';
 import Form from '../Form';
 
-const Login = props => {
-  const { history, handleLogin } = props;
+const Login = () => {
   const type = 'login';
 
   return (
-    <Form type={type} history={history} handleLogin={handleLogin} />
+    <Form type={type} />
   );
 };
 

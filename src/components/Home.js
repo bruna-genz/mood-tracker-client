@@ -1,14 +1,19 @@
 import React from 'react';
 import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { LOGOUT_URL } from '../constants/urls';
+import { handleLogout } from '../actions';
 
-const Home = (props) => {
+const Home = () => {
   const history = useHistory();
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  const dispatch = useDispatch();
 
   const handleClick = () => {
-    axios.delete('http://localhost:3001/logout', { withCredentials: true })
-      .then(response => {
-        props.handleLogout();
+    axios.delete(LOGOUT_URL, { withCredentials: true })
+      .then(() => {
+        dispatch(handleLogout());
         history.push('/');
       })
       .catch(error => console.log(error));
@@ -21,7 +26,7 @@ const Home = (props) => {
       <Link to="/signup">Sign Up</Link>
       <br />
       {
-          props.loggedInStatus
+          isLoggedIn
             ? <Link to="/logout" onClick={handleClick}>Log Out</Link>
             : null
         }

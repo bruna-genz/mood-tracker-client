@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 import { SIGNUP_URL, LOGIN_URL } from '../constants/urls';
+import { handleLogin } from '../actions';
 
 const Form = props => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [errors, setErrors] = useState('');
-  const { type, handleLogin } = props;
   const history = useHistory();
+  const dispatch = useDispatch();
+  const { type } = props;
 
   // componentWillMount() {
   //   return this.props.loggedInStatus ? this.redirect() : null;
@@ -32,7 +35,7 @@ const Form = props => {
     axios.post(URL, { user }, { withCredentials: true })
       .then(response => {
         if (response.data.status === 'created' || response.data.logged_in) {
-          handleLogin(response.data);
+          dispatch(handleLogin(response.data));
           redirect();
         } else {
           setErrors(response.data.errors);
