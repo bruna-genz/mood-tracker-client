@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { SIGNUP_URL, LOGIN_URL } from '../constants/urls';
 import { handleLogin } from '../actions';
 
@@ -103,6 +104,10 @@ const Form = props => {
       </div>
     </div>
   );
+};
+
+Form.propTypes = {
+  type: PropTypes.string.isRequired,
 };
 
 export default Form;
