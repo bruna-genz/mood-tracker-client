@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
-import { SIGNUP_URL, LOGIN_URL } from '../constants';
+import { SIGNUP_URL, LOGIN_URL } from '../constants/urls';
 
 const Form = props => {
   const [username, setUsername] = useState('');
