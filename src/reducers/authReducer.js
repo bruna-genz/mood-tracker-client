@@ -1,22 +1,27 @@
-import { createReducer } from '@reduxjs/toolkit';
-// import { HANDLE_LOGIN, HANDLE_LOGOUT } from '../constants/actionTypes';
+import { HANDLE_LOGIN, HANDLE_LOGOUT } from '../constants/actionTypes';
 
 const initialState = {
   isLoggedIn: false,
   user: {},
 };
 
-const authReducer = createReducer(initialState, {
-  HANDLE_LOGIN: (state, action) => ({
-    ...state,
-    isLoggedIn: true,
-    user: action.payload,
-  }),
-  HANDLE_LOGOUT: state => ({
-    ...state,
-    isLoggedIn: false,
-    user: {},
-  }),
-});
+const authReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case HANDLE_LOGIN:
+      return {
+        ...state,
+        isLoggedIn: true,
+        user: action.payload,
+      };
+    case HANDLE_LOGOUT:
+      return {
+        ...state,
+        isLoggedIn: false,
+        user: {},
+      };
+    default:
+      return state;
+  }
+};
 
 export default authReducer;

@@ -1,5 +1,10 @@
-import { createAction } from '@reduxjs/toolkit';
-// import { HANDLE_LOGIN, HANDLE_LOGOUT } from '../constants/actionTypes';
+import { HANDLE_LOGIN, HANDLE_LOGOUT } from '../constants/actionTypes';
 
-export const handleLogin = createAction('HANDLE_LOGIN');
-export const handleLogout = createAction('HANDLE_LOGOUT');
+export const handleLogin = user => ({
+  type: HANDLE_LOGIN,
+  payload: user,
+});
+
+export const handleLogout = () => ({
+  type: HANDLE_LOGOUT,
+});

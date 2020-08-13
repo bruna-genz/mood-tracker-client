@@ -1,8 +1,16 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { createStore } from 'redux';
 import rootReducer from './reducers';
 
-const store = configureStore({
-  reducer: rootReducer,
-});
+const initialState = {
+  auth: {
+    isLoggedIn: false,
+    user: {},
+  },
+};
+
+const store = createStore(
+  rootReducer,
+  initialState,
+);
 
 export default store;
