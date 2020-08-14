@@ -10,6 +10,7 @@ import { handleLogin, handleLogout } from '../actions';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import '../assets/styles/App.scss';
+import EvaluationForm from './EvaluationForm';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -35,8 +36,9 @@ const App = () => {
         <Header />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={Signup} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
+          <Route path="/eval" component={EvaluationForm} />
         </Switch>
         <Navbar />
       </BrowserRouter>
