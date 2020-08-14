@@ -2,6 +2,7 @@ import React from 'react';
 import { FaPlusCircle } from 'react-icons/fa';
 import { AiFillPieChart, AiOutlineLineChart } from 'react-icons/ai';
 import { FiMoreHorizontal } from 'react-icons/fi';
+import '../assets/styles/Navbar.scss';
 
 const Navbar = () => (
   <nav className="Navbar">

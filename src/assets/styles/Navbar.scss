@@ -1,0 +1,15 @@
+.Navbar {
+  background-color: #313944;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 50px;
+  svg {
+    fill: lightgray;
+    stroke: lightgray;
+  }
+}

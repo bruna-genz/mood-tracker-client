@@ -9,6 +9,7 @@ import Signup from '../components/registrations/Signup';
 import { handleLogin, handleLogout } from '../actions';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
+import '../assets/styles/App.scss';
 
 const App = () => {
   const dispatch = useDispatch();

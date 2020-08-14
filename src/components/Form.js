@@ -15,10 +15,6 @@ const Form = props => {
   const dispatch = useDispatch();
   const { type } = props;
 
-  // componentWillMount() {
-  //   return this.props.loggedInStatus ? this.redirect() : null;
-  // }
-
   const redirect = () => {
     history.push('/');
   };
