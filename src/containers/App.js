@@ -7,6 +7,8 @@ import Home from '../components/Home';
 import Login from '../components/registrations/Login';
 import Signup from '../components/registrations/Signup';
 import { handleLogin, handleLogout } from '../actions';
+import Navbar from '../components/Navbar';
+import Header from '../components/Header';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -29,11 +31,13 @@ const App = () => {
   return (
     <div className="App">
       <BrowserRouter>
+        <Header />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
         </Switch>
+        <Navbar />
       </BrowserRouter>
     </div>
   );
