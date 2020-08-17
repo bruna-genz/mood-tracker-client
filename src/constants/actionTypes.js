@@ -1,7 +1,9 @@
 const HANDLE_LOGIN = 'HANDLE_LOGIN';
 const HANDLE_LOGOUT = 'HANDLE_LOGOUT';
+const ADD_MOOD = 'ADD_MOOD';
 
 export {
   HANDLE_LOGIN,
   HANDLE_LOGOUT,
+  ADD_MOOD,
 };

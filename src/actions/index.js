@@ -1,4 +1,4 @@
-import { HANDLE_LOGIN, HANDLE_LOGOUT } from '../constants/actionTypes';
+import { HANDLE_LOGIN, HANDLE_LOGOUT, ADD_MOOD } from '../constants/actionTypes';
 
 export const handleLogin = user => ({
   type: HANDLE_LOGIN,
@@ -7,4 +7,9 @@ export const handleLogin = user => ({
 
 export const handleLogout = () => ({
   type: HANDLE_LOGOUT,
+});
+
+export const addMood = mood => ({
+  type: ADD_MOOD,
+  payload: mood,
 });

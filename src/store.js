@@ -6,6 +6,10 @@ const initialState = {
     isLoggedIn: false,
     user: {},
   },
+  moods: {
+    currentMood: {},
+    moodsList: [],
+  },
 };
 
 const store = createStore(

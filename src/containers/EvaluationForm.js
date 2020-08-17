@@ -1,12 +1,18 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable consistent-return */
 /* eslint-disable camelcase */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { MOOD_ELEMENTS_URL } from '../constants/urls';
+import { useDispatch } from 'react-redux';
+import { MOOD_ELEMENTS_URL, POST_EVALUATION } from '../constants/urls';
+import { addMood } from '../actions';
 
 const EvaluationForm = () => {
   const options = ['Very happy', 'Happy', 'Normal', 'Sad', 'Very sad'];
   const [moodElements, setMoodElements] = useState([]);
-  const [moodInputs, setMoodInputs] = useState({});
+  const [evaluations, setEvaluations] = useState({});
+  const [errors, setErrors] = useState();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getMoodElements = () => {
@@ -18,49 +24,92 @@ const EvaluationForm = () => {
     getMoodElements();
   }, []);
 
-  return (
-    <form>
-      {moodElements.map(element => {
-        const { input_type, name } = element;
-        if (input_type === 'option') {
-          return (
-            <div className="mood-select">
-              { options.map(option => (
-                <div className="radio" key={option}>
-                  <input
-                    type="radio"
-                    value={option}
-                    checked={moodInputs[name] === option}
-                    onChange={e => {
-                      const temp = { ...moodInputs };
-                      temp[name] = e.target.value;
-                      setMoodInputs(temp);
-                    }}
-                  />
-                  {option}
-                </div>
-              ))}
-            </div>
-          );
-        }
+  const handleSubmitEvaluation = e => {
+    e.preventDefault();
+    const evaluationsArray = Object.entries(evaluations);
 
-        if (input_type === 'text') {
-          return (
-            <input
-              placeholder={name}
-              type="text"
-              name={name}
-              value={moodInputs[name]}
-              onChange={e => {
-                const temp = { ...moodInputs };
-                temp[name] = e.target.value;
-                setMoodInputs(temp);
-              }}
-            />
-          );
-        }
-      })}
-    </form>
+    let evaluation;
+    evaluationsArray.forEach(curEval => {
+      evaluation = {
+        evaluation: curEval[1],
+        mood_element_id: curEval[0],
+      };
+
+      axios.post(POST_EVALUATION, { evaluation }, { withCredentials: true })
+        .then(response => {
+          if (response.data.status === 'created') {
+            console.log(response.data);
+            dispatch(addMood(response.data));
+            // redirect();
+          } else {
+            setErrors(response.data.errors);
+          }
+        })
+        .catch(error => console.log('api errors:', error));
+    });
+  };
+
+  const handleErrors = () => (
+    <div>
+      <ul>
+        {errors.map(error => <li key={error}>{error}</li>)}
+      </ul>
+    </div>
+  );
+
+  return (
+    <div className="EvaluationForm">
+      <form>
+        {moodElements.map(element => {
+          const { input_type, id, name } = element;
+          if (input_type === 'option') {
+            return (
+              <div className="mood-select" key={id}>
+                { options.map(option => (
+                  <div className="radio" key={option}>
+                    <input
+                      type="radio"
+                      value={option}
+                      checked={evaluations[id] === option}
+                      onChange={e => {
+                        const temp = { ...evaluations };
+                        temp[id] = e.target.value;
+                        setEvaluations(temp);
+                      }}
+                    />
+                    {option}
+                  </div>
+                ))}
+              </div>
+            );
+          }
+
+          if (input_type === 'text') {
+            return (
+              <input
+                key={id}
+                placeholder={name}
+                type="text"
+                name={id}
+                value={evaluations[id]}
+                onChange={e => {
+                  const temp = { ...evaluations };
+                  temp[id] = e.target.value;
+                  setEvaluations(temp);
+                }}
+              />
+            );
+          }
+        })}
+
+        <input type="submit" value="Add" onClick={e => handleSubmitEvaluation(e)} />
+      </form>
+
+      <div>
+        { errors ? handleErrors() : null }
+      </div>
+    </div>
+
   );
 };
 
