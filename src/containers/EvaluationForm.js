@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import { MOOD_ELEMENTS_URL, POST_EVALUATION } from '../constants/urls';
+import { MOOD_ELEMENTS_URL, EVALUATIONS_URL } from '../constants/urls';
 import { addMood } from '../actions';
 
 const EvaluationForm = () => {
@@ -41,7 +41,7 @@ const EvaluationForm = () => {
         mood_element_id: curEval[0],
       };
 
-      axios.post(POST_EVALUATION, { evaluation }, { withCredentials: true })
+      axios.post(EVALUATIONS_URL, { evaluation }, { withCredentials: true })
         .then(response => {
           if (response.data.status === 'created') {
             dispatch(addMood(response.data));

@@ -11,6 +11,7 @@ import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import '../assets/styles/App.scss';
 import EvaluationForm from './EvaluationForm';
+import MoodsList from './MoodsList';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -39,6 +40,7 @@ const App = () => {
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <Route path="/eval" component={EvaluationForm} />
+          <Route path="/trackit" component={MoodsList} />
         </Switch>
         <Navbar />
       </BrowserRouter>

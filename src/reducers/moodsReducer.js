@@ -1,4 +1,4 @@
-import { ADD_MOOD } from '../constants/actionTypes';
+import { ADD_MOOD, GET_MOODS } from '../constants/actionTypes';
 
 const initialState = {
   currentMood: [],
@@ -19,6 +19,11 @@ const moodsReducer = (state = initialState, action) => {
         currentMood: [...state.currentMood, moodData],
       };
     }
+    case GET_MOODS:
+      return {
+        ...state,
+        moodsList: action.payload,
+      };
     default:
       return state;
   }
