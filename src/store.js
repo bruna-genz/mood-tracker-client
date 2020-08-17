@@ -7,7 +7,7 @@ const initialState = {
     user: {},
   },
   moods: {
-    currentMood: {},
+    currentMood: [],
     moodsList: [],
   },
 };

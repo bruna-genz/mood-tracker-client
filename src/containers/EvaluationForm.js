@@ -4,6 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
 import { MOOD_ELEMENTS_URL, POST_EVALUATION } from '../constants/urls';
 import { addMood } from '../actions';
 
@@ -13,6 +14,7 @@ const EvaluationForm = () => {
   const [evaluations, setEvaluations] = useState({});
   const [errors, setErrors] = useState();
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     const getMoodElements = () => {
@@ -23,6 +25,10 @@ const EvaluationForm = () => {
     };
     getMoodElements();
   }, []);
+
+  const redirect = () => {
+    history.push('/');
+  };
 
   const handleSubmitEvaluation = e => {
     e.preventDefault();
@@ -38,9 +44,8 @@ const EvaluationForm = () => {
       axios.post(POST_EVALUATION, { evaluation }, { withCredentials: true })
         .then(response => {
           if (response.data.status === 'created') {
-            console.log(response.data);
             dispatch(addMood(response.data));
-            // redirect();
+            redirect();
           } else {
             setErrors(response.data.errors);
           }

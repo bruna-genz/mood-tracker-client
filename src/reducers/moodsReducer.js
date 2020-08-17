@@ -1,17 +1,24 @@
 import { ADD_MOOD } from '../constants/actionTypes';
 
 const initialState = {
-  currentMood: {},
+  currentMood: [],
   moodsList: [],
 };
 
 const moodsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_MOOD:
+    case ADD_MOOD: {
+      const { payload } = action;
+      const moodData = {
+        created: payload.evaluation.created_at,
+        name: payload.moodElementName,
+        evaluation: payload.evaluation.evaluation,
+      };
       return {
         ...state,
-        currentMood: action.payload,
+        currentMood: [...state.currentMood, moodData],
       };
+    }
     default:
       return state;
   }
