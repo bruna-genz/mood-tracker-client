@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { MOOD_ELEMENTS_URL } from '../constants/urls';
@@ -15,26 +16,26 @@ const EvaluationForm = () => {
         });
     };
     getMoodElements();
-
-    setMoodInputs(() => {
-      // eslint-disable-next-line no-return-assign
-      moodElements.forEach(element => moodInputs[element] = '');
-    });
   }, []);
 
   return (
     <form>
       {moodElements.map(element => {
-        if (element.type === 'option') {
+        const { input_type, name } = element;
+        if (input_type === 'option') {
           return (
             <div className="mood-select">
               { options.map(option => (
                 <div className="radio" key={option}>
                   <input
                     type="radio"
-                    value={moodInputs[element]}
-                    checked={moodInputs[element] === element}
-                    onChange={e => setMoodInputs({ ...moodInputs, element: e.target.value })}
+                    value={option}
+                    checked={moodInputs[name] === option}
+                    onChange={e => {
+                      const temp = { ...moodInputs };
+                      temp[name] = e.target.value;
+                      setMoodInputs(temp);
+                    }}
                   />
                   {option}
                 </div>
@@ -43,34 +44,22 @@ const EvaluationForm = () => {
           );
         }
 
-        if (element.type === 'text') {
+        if (input_type === 'text') {
           return (
             <input
-              placeholder={element.name}
+              placeholder={name}
               type="text"
-              name={element.ref}
-              value={moodInputs[element]}
-              onChange={e => setMoodInputs({ ...moodInputs, element: e.target.value })}
+              name={name}
+              value={moodInputs[name]}
+              onChange={e => {
+                const temp = { ...moodInputs };
+                temp[name] = e.target.value;
+                setMoodInputs(temp);
+              }}
             />
           );
         }
       })}
-
-      {/* <input
-        placeholder="What went badly today?"
-        type="negative"
-        name="negative"
-        value={negative}
-        onChange={e => setNegative(e.target.value)}
-      />
-      <input
-        placeholder="What did you learned?"
-        type="learned"
-        name="learned"
-        value={learned}
-        onChange={e => setLearned(e.target.value)}
-      />
-      <input type="submit" value="Add" /> */}
     </form>
   );
 };
