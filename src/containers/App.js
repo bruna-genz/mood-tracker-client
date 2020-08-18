@@ -12,6 +12,7 @@ import Header from '../components/Header';
 import '../assets/styles/App.scss';
 import EvaluationForm from './EvaluationForm';
 import EvaluationsContainer from './EvaluationsContainer';
+import MoreMenu from '../components/MoreMenu';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -31,6 +32,10 @@ const App = () => {
     loginStatus();
   }, [dispatch]);
 
+  const logout = () => {
+    dispatch(handleLogout());
+  };
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -41,6 +46,13 @@ const App = () => {
           <Route path="/signup" component={Signup} />
           <Route path="/eval" component={EvaluationForm} />
           <Route path="/trackit" component={EvaluationsContainer} />
+          <Route
+            path="/menu"
+            render={props => (
+              // eslint-disable-next-line react/jsx-props-no-spreading
+              <MoreMenu {...props} logout={logout} />
+            )}
+          />
         </Switch>
         <Navbar />
       </BrowserRouter>

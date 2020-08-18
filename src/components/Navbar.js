@@ -10,7 +10,7 @@ const Navbar = () => (
     <div className="add-link"><FaPlusCircle /></div>
     <div className="track-link"><Link to="/trackit"><AiOutlineLineChart /></Link></div>
     <div className="progress-link"><AiFillPieChart /></div>
-    <div className="more-link"><FiMoreHorizontal /></div>
+    <div className="more-link"><Link to="/menu"><FiMoreHorizontal /></Link></div>
   </nav>
 );
 
