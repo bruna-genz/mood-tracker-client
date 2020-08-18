@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { ADD_EVALUATION, GET_EVALUATIONS } from '../constants/actionTypes';
 
 const initialState = {
@@ -19,11 +20,16 @@ const evaluationsReducer = (state = initialState, action) => {
         currentEvaluation: [...state.currentEvaluation, evaluationData],
       };
     }
-    case GET_EVALUATIONS:
+    case GET_EVALUATIONS: {
+      const currentEvaluation = action.payload.filter(evaluation => (
+        evaluation.created_at === moment().format('DD MMM YY')
+      ));
       return {
         ...state,
         evaluationsList: action.payload,
+        currentEvaluation,
       };
+    }
     default:
       return state;
   }

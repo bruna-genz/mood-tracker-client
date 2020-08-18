@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 import CurrentEvaluation from './CurrentEvaluation';
+import useGetEvaluations from '../hooks/useGetEvaluations';
 
 const Home = () => {
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
   const currentEvaluation = useSelector(state => state.evaluations.currentEvaluation);
   const loading = useSelector(state => state.loading);
+  const getEvaluations = useGetEvaluations();
+
+  useEffect(() => {
+    if (_.isEmpty(currentEvaluation)) {
+      getEvaluations();
+    }
+  }, []);
+
+  console.log(currentEvaluation);
 
   if (loading) {
     return <p>loading</p>;
