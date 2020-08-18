@@ -6,7 +6,9 @@ import { LOGIN_STATUS_URL } from '../constants/urls';
 import Home from '../components/Home';
 import Login from '../components/registrations/Login';
 import Signup from '../components/registrations/Signup';
-import { handleLogin, handleLogout } from '../actions';
+import {
+  handleLogin, handleLogout, startLoading, stopLoading,
+} from '../actions';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import '../assets/styles/App.scss';
@@ -19,6 +21,7 @@ const App = () => {
 
   useEffect(() => {
     const loginStatus = () => {
+      dispatch(startLoading());
       axios.get(LOGIN_STATUS_URL, { withCredentials: true })
         .then(response => {
           if (response.data.logged_in) {
@@ -26,15 +29,12 @@ const App = () => {
           } else {
             dispatch(handleLogout());
           }
+          dispatch(stopLoading());
         })
         .catch(error => console.log('api errors:', error));
     };
     loginStatus();
   }, [dispatch]);
-
-  const logout = () => {
-    dispatch(handleLogout());
-  };
 
   return (
     <div className="App">
@@ -46,13 +46,7 @@ const App = () => {
           <Route path="/signup" component={Signup} />
           <Route path="/eval" component={EvaluationForm} />
           <Route path="/trackit" component={EvaluationsContainer} />
-          <Route
-            path="/menu"
-            render={props => (
-              // eslint-disable-next-line react/jsx-props-no-spreading
-              <MoreMenu {...props} logout={logout} />
-            )}
-          />
+          <Route path="/menu" component={MoreMenu} />
         </Switch>
         <Navbar />
       </BrowserRouter>

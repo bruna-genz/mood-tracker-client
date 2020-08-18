@@ -3,10 +3,12 @@ import { useSelector } from 'react-redux';
 import moment from 'moment';
 import { FaUserCircle } from 'react-icons/fa';
 import { Redirect } from 'react-router';
+import useLogout from '../hooks/useLogout';
 
-const MoreMenu = ({ logout }) => {
+const MoreMenu = () => {
   const user = useSelector(state => state.auth.user);
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  const { logout } = useLogout();
 
   return (
     isLoggedIn

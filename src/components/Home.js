@@ -8,6 +8,11 @@ import CurrentEvaluation from './CurrentEvaluation';
 const Home = () => {
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
   const currentEvaluation = useSelector(state => state.evaluations.currentEvaluation);
+  const loading = useSelector(state => state.loading);
+
+  if (loading) {
+    return <p>loading</p>;
+  }
 
   return (
     !isLoggedIn
@@ -26,7 +31,6 @@ const Home = () => {
             )}
         </div>
       )
-
   );
 };
 
