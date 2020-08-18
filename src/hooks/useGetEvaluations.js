@@ -16,8 +16,8 @@ const useGetEvaluations = () => {
     axios.get(EVALUATIONS_URL, { withCredentials: true })
       .then(response => {
         if (response.data.evaluations) {
-          console.log('get eval')
           const formatedData = formatDate(response.data.evaluations);
+          console.log(formatedData)
           dispatch(getEvaluations(formatedData));
         }
       })

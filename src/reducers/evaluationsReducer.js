@@ -21,6 +21,7 @@ const evaluationsReducer = (state = initialState, action) => {
       };
     }
     case GET_EVALUATIONS: {
+      console.log(action.payload)
       const currentEvaluation = action.payload.filter(evaluation => (
         evaluation.created_at === moment().format('DD MMM YY')
       ));

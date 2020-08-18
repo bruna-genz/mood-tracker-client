@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import _ from 'lodash';
 import { LOGIN_STATUS_URL } from '../constants/urls';
 import Home from '../components/Home';
 import Login from '../components/registrations/Login';
@@ -15,9 +16,12 @@ import '../assets/styles/App.scss';
 import EvaluationForm from './EvaluationForm';
 import EvaluationsContainer from './EvaluationsContainer';
 import MoreMenu from '../components/MoreMenu';
+import useGetEvaluations from '../hooks/useGetEvaluations';
 
 const App = () => {
   const dispatch = useDispatch();
+  const getEvaluations = useGetEvaluations();
+  const currentEvaluation = useSelector(state => state.evaluations.currentEvaluation);
 
   useEffect(() => {
     const loginStatus = () => {
@@ -35,6 +39,12 @@ const App = () => {
     };
     loginStatus();
   }, [dispatch]);
+
+  useEffect(() => {
+    if (_.isEmpty(currentEvaluation)) {
+      getEvaluations();
+    }
+  });
 
   return (
     <div className="App">

@@ -3,8 +3,9 @@
 /* eslint-disable camelcase */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router';
+import _ from 'lodash';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, Redirect } from 'react-router';
 import { MOOD_ELEMENTS_URL, EVALUATIONS_URL } from '../constants/urls';
 import { addEvaluation } from '../actions';
 
@@ -13,6 +14,7 @@ const EvaluationForm = () => {
   const [moodElements, setMoodElements] = useState([]);
   const [evaluations, setEvaluations] = useState({});
   const [errors, setErrors] = useState();
+  const currentEvaluation = useSelector(state => state.evaluations.currentEvaluation);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -63,58 +65,61 @@ const EvaluationForm = () => {
   );
 
   return (
-    <div className="EvaluationForm">
-      <form>
-        {moodElements.map(element => {
-          const { input_type, id, name } = element;
-          if (input_type === 'option') {
-            return (
-              <div className="mood-select" key={id}>
-                { options.map(option => (
-                  <div className="radio" key={option}>
-                    <input
-                      type="radio"
-                      value={option}
-                      checked={evaluations[id] === option}
-                      onChange={e => {
-                        const temp = { ...evaluations };
-                        temp[id] = e.target.value;
-                        setEvaluations(temp);
-                      }}
-                    />
-                    {option}
+    !_.isEmpty(currentEvaluation)
+      ? <Redirect to="/" />
+      : (
+        <div className="EvaluationForm">
+          <form>
+            {moodElements.map(element => {
+              const { input_type, id, name } = element;
+              if (input_type === 'option') {
+                return (
+                  <div className="mood-select" key={id}>
+                    { options.map(option => (
+                      <div className="radio" key={option}>
+                        <input
+                          type="radio"
+                          value={option}
+                          checked={evaluations[id] === option}
+                          onChange={e => {
+                            const temp = { ...evaluations };
+                            temp[id] = e.target.value;
+                            setEvaluations(temp);
+                          }}
+                        />
+                        {option}
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            );
-          }
+                );
+              }
 
-          if (input_type === 'text') {
-            return (
-              <input
-                key={id}
-                placeholder={name}
-                type="text"
-                name={id}
-                value={evaluations[id]}
-                onChange={e => {
-                  const temp = { ...evaluations };
-                  temp[id] = e.target.value;
-                  setEvaluations(temp);
-                }}
-              />
-            );
-          }
-        })}
+              if (input_type === 'text') {
+                return (
+                  <input
+                    key={id}
+                    placeholder={name}
+                    type="text"
+                    name={id}
+                    value={evaluations[id]}
+                    onChange={e => {
+                      const temp = { ...evaluations };
+                      temp[id] = e.target.value;
+                      setEvaluations(temp);
+                    }}
+                  />
+                );
+              }
+            })}
 
-        <input type="submit" value="Add" onClick={e => handleSubmitEvaluation(e)} />
-      </form>
+            <input type="submit" value="Add" onClick={e => handleSubmitEvaluation(e)} />
+          </form>
 
-      <div>
-        { errors ? handleErrors() : null }
-      </div>
-    </div>
-
+          <div>
+            { errors ? handleErrors() : null }
+          </div>
+        </div>
+      )
   );
 };
 
