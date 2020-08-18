@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import authReducer from './authReducer';
-import moodsReducer from './moodsReducer';
+import evaluationsReducer from './evaluationsReducer';
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  moods: moodsReducer,
+  evaluations: evaluationsReducer,
 });
 
 export default rootReducer;

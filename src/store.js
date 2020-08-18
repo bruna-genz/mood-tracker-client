@@ -6,9 +6,9 @@ const initialState = {
     isLoggedIn: false,
     user: {},
   },
-  moods: {
-    currentMood: [],
-    moodsList: [],
+  evaluations: {
+    currentEvaluation: [],
+    evaluationsList: [],
   },
 };
 

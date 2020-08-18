@@ -1,5 +1,5 @@
 import {
-  HANDLE_LOGIN, HANDLE_LOGOUT, ADD_MOOD, GET_MOODS,
+  HANDLE_LOGIN, HANDLE_LOGOUT, ADD_EVALUATION, GET_EVALUATIONS,
 } from '../constants/actionTypes';
 
 export const handleLogin = user => ({
@@ -11,12 +11,12 @@ export const handleLogout = () => ({
   type: HANDLE_LOGOUT,
 });
 
-export const addMood = mood => ({
-  type: ADD_MOOD,
-  payload: mood,
+export const addEvaluation = evaluation => ({
+  type: ADD_EVALUATION,
+  payload: evaluation,
 });
 
-export const getMoods = moods => ({
-  type: GET_MOODS,
-  payload: moods,
+export const getEvaluations = evaluations => ({
+  type: GET_EVALUATIONS,
+  payload: evaluations,
 });

@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { MOOD_ELEMENTS_URL, EVALUATIONS_URL } from '../constants/urls';
-import { addMood } from '../actions';
+import { addEvaluation } from '../actions';
 
 const EvaluationForm = () => {
   const options = ['Very happy', 'Happy', 'Normal', 'Sad', 'Very sad'];
@@ -44,7 +44,7 @@ const EvaluationForm = () => {
       axios.post(EVALUATIONS_URL, { evaluation }, { withCredentials: true })
         .then(response => {
           if (response.data.status === 'created') {
-            dispatch(addMood(response.data));
+            dispatch(addEvaluation(response.data));
             redirect();
           } else {
             setErrors(response.data.errors);

@@ -3,18 +3,18 @@ import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
-import CurrentMood from './CurrentMood';
+import CurrentEvaluation from './CurrentEvaluation';
 
 const Home = () => {
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
-  const currentMood = useSelector(state => state.moods.currentMood);
+  const currentEvaluation = useSelector(state => state.evaluations.currentEvaluation);
 
   return (
     !isLoggedIn
       ? <Redirect to="/login" />
       : (
         <div>
-          { !_.isEmpty(currentMood) ? <CurrentMood mood={currentMood} />
+          { !_.isEmpty(currentEvaluation) ? <CurrentEvaluation evaluation={currentEvaluation} />
             : (
               <div>
                 <h1>Welcome back!</h1>
