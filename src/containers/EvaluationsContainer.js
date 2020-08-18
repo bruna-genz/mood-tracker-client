@@ -5,6 +5,7 @@ import moment from 'moment';
 import { useSelector, useDispatch } from 'react-redux';
 import { EVALUATIONS_URL } from '../constants/urls';
 import { getEvaluations } from '../actions/index';
+import EvaluationsList from '../components/EvaluationsList';
 
 const EvaluationsContainer = () => {
   const evaluationsList = useSelector(state => state.evaluations.evaluationsList);
@@ -31,14 +32,7 @@ const EvaluationsContainer = () => {
   }, [dispatch]);
 
   return (
-    <ul className="EvaluationsList">
-      { groupedEvaluationsList.map(evaluationArray => (
-        <li key={evaluationArray[0]}>
-          <h4>{evaluationArray[0]}</h4>
-          {evaluationArray[1].map(evaluation => <p key={evaluation.id}>{evaluation.evaluation}</p>)}
-        </li>
-      ))}
-    </ul>
+    <EvaluationsList evaluationsArray={groupedEvaluationsList} />
   );
 };
 
