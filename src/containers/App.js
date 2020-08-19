@@ -56,7 +56,7 @@ const App = () => {
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <Route path="/eval" component={EvaluationForm} />
-          <Route path="/trackit" component={EvaluationsContainer} />
+          <Route path="/track.it" component={EvaluationsContainer} />
           <Route path="/menu" component={MoreMenu} />
         </Switch>
         <Navbar />
