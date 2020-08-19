@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 const CurrentEvaluation = props => {
   const { evaluation } = props;
 
-  console.log(evaluation)
-
   return (
     <div className="CurrentEvaluation">
       { evaluation.map(evaluationEl => (

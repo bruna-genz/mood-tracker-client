@@ -22,6 +22,7 @@ const App = () => {
   const dispatch = useDispatch();
   const getEvaluations = useGetEvaluations();
   const currentEvaluation = useSelector(state => state.evaluations.currentEvaluation);
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
 
   useEffect(() => {
     const loginStatus = () => {
@@ -41,10 +42,10 @@ const App = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (_.isEmpty(currentEvaluation)) {
+    if (isLoggedIn && _.isEmpty(currentEvaluation)) {
       getEvaluations();
     }
-  }, []);
+  }, [isLoggedIn, getEvaluations, currentEvaluation]);
 
   return (
     <div className="App">

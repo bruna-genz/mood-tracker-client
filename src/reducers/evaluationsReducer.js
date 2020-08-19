@@ -7,6 +7,7 @@ const initialState = {
 };
 
 const formatData = dataObject => ({
+  id: dataObject.id,
   created: dataObject.created_at,
   name: dataObject.mood_element_name,
   evaluation: dataObject.evaluation,
