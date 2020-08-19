@@ -1,5 +1,16 @@
+@import './contants';
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: $default-font;
+}
+
+html,
+body,
+#root,
+.App {
+  background-color: $default-gray;
+  height: 100%;
 }

@@ -1,7 +1,15 @@
+@import './contants';
+
 .Header {
-  background-color: #41b5e8;
+  background-color: $default-blue;
   height: 50px;
   display: flex;
   align-items: center;
   padding: 10px;
+  color: $default-black;
+  .current-path {
+    text-align: center;
+    width: 90%;
+    font-weight: bold;
+  }
 }

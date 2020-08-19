@@ -10,6 +10,9 @@ const Header = () => {
     if (location === '/') {
       return 'Home';
     }
+    if (location === '/login' || location === '/signup') {
+      return 'OhMyMood!';
+    }
     return location.slice(1).replace(/(^\w{1})/g, match => match.toUpperCase());
   };
 

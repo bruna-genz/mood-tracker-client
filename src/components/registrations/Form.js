@@ -3,8 +3,9 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { SIGNUP_URL, LOGIN_URL } from '../constants/urls';
-import { handleLogin } from '../actions';
+import { SIGNUP_URL, LOGIN_URL } from '../../constants/urls';
+import { handleLogin } from '../../actions';
+import '../../assets/styles/Form.scss';
 
 const Form = props => {
   const [username, setUsername] = useState('');
@@ -42,18 +43,14 @@ const Form = props => {
   };
 
   const handleErrors = () => (
-    <div>
-      <ul>
-        {errors.map(error => <li key={error}>{error}</li>)}
-      </ul>
-    </div>
+    <ul className="errors-list">
+      {errors.map(error => <li key={error}>{error}</li>)}
+    </ul>
   );
 
   return (
-    <div>
-      <h1>{ type === 'signup' ? 'Sign Up' : 'Log In'}</h1>
-      {' '}
-      <form onSubmit={handleSubmit}>
+    <div className="form-container">
+      <form className="Form" onSubmit={handleSubmit}>
         <input
           placeholder="username"
           type="text"
@@ -70,27 +67,27 @@ const Form = props => {
         />
         {' '}
         { type === 'signup'
-          && (
-            <input
-              placeholder="password confirmation"
-              type="password"
-              name="password_confirmation"
-              value={passwordConfirmation}
-              onChange={e => setPasswordConfirmation(e.target.value)}
-            />
-          )}
+            && (
+              <input
+                placeholder="password confirmation"
+                type="password"
+                name="password_confirmation"
+                value={passwordConfirmation}
+                onChange={e => setPasswordConfirmation(e.target.value)}
+              />
+            )}
 
         <button placeholder="submit" type="submit">
           { type === 'signup' ? 'Sign Up' : 'Log In' }
         </button>
         { type === 'login'
-          && (
-            <div>
-              or
-              {' '}
-              <Link to="/signup">sign up</Link>
-            </div>
-          )}
+            && (
+              <div className="signup-link">
+                or
+                {' '}
+                <Link to="/signup">Sign up</Link>
+              </div>
+            )}
       </form>
 
       <div>

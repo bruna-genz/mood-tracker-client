@@ -1,5 +1,7 @@
+@import './contants';
+
 .Navbar {
-  background-color: #313944;
+  background-color: $default-black;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -9,7 +11,7 @@
   left: 0;
   height: 50px;
   svg {
-    fill: lightgray;
-    stroke: lightgray;
+    fill: $default-gray;
+    stroke: $default-gray;
   }
 }
