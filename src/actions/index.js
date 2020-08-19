@@ -1,5 +1,11 @@
 import {
-  HANDLE_LOGIN, HANDLE_LOGOUT, ADD_EVALUATION, GET_EVALUATIONS, START_LOADING, STOP_LOADING
+  HANDLE_LOGIN,
+  HANDLE_LOGOUT,
+  ADD_EVALUATION,
+  GET_EVALUATIONS,
+  START_LOADING,
+  STOP_LOADING,
+  CLEAN_EVALUATIONS,
 } from '../constants/actionTypes';
 
 export const handleLogin = user => ({
@@ -19,6 +25,10 @@ export const addEvaluation = evaluation => ({
 export const getEvaluations = evaluations => ({
   type: GET_EVALUATIONS,
   payload: evaluations,
+});
+
+export const cleanEvaluations = () => ({
+  type: CLEAN_EVALUATIONS,
 });
 
 export const startLoading = () => ({

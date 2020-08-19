@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { ADD_EVALUATION, GET_EVALUATIONS } from '../constants/actionTypes';
+import { ADD_EVALUATION, GET_EVALUATIONS, CLEAN_EVALUATIONS } from '../constants/actionTypes';
 
 const initialState = {
   currentEvaluation: [],
@@ -32,6 +32,12 @@ const evaluationsReducer = (state = initialState, action) => {
         currentEvaluation,
       };
     }
+    case CLEAN_EVALUATIONS:
+      return {
+        ...state,
+        currentEvaluation: [],
+        evaluationsList: [],
+      };
     default:
       return state;
   }
