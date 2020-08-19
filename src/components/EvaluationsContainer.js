@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import { useSelector } from 'react-redux';
-import EvaluationsList from '../components/EvaluationsList';
+import EvaluationsList from './EvaluationsList';
 
 const EvaluationsContainer = () => {
   const evaluationsList = useSelector(state => state.evaluations.evaluationsList);

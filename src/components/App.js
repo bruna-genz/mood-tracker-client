@@ -4,18 +4,18 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import _ from 'lodash';
 import { LOGIN_STATUS_URL } from '../constants/urls';
-import Home from '../components/Home';
-import Login from '../components/registrations/Login';
-import Signup from '../components/registrations/Signup';
+import Home from './Home';
+import Login from './registrations/Login';
+import Signup from './registrations/Signup';
 import {
   handleLogin, handleLogout, startLoading, stopLoading,
 } from '../actions';
-import Navbar from '../components/Navbar';
-import Header from '../components/Header';
+import Navbar from './Navbar';
+import Header from './Header';
 import '../assets/styles/App.scss';
 import EvaluationForm from './EvaluationForm';
 import EvaluationsContainer from './EvaluationsContainer';
-import MoreMenu from '../components/MoreMenu';
+import MoreMenu from './MoreMenu';
 import useGetEvaluations from '../hooks/useGetEvaluations';
 
 const App = () => {
