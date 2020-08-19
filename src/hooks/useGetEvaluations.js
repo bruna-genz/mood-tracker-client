@@ -17,7 +17,6 @@ const useGetEvaluations = () => {
       .then(response => {
         if (response.data.evaluations) {
           const formatedData = formatDate(response.data.evaluations);
-          console.log(formatedData)
           dispatch(getEvaluations(formatedData));
         }
       })

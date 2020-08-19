@@ -44,7 +44,7 @@ const App = () => {
     if (_.isEmpty(currentEvaluation)) {
       getEvaluations();
     }
-  });
+  }, []);
 
   return (
     <div className="App">

@@ -6,25 +6,26 @@ const initialState = {
   evaluationsList: [],
 };
 
+const formatData = dataObject => ({
+  created: dataObject.created_at,
+  name: dataObject.mood_element_name,
+  evaluation: dataObject.evaluation,
+});
+
 const evaluationsReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_EVALUATION: {
       const { payload } = action;
-      const evaluationData = {
-        created: payload.evaluation.created_at,
-        name: payload.moodElementName,
-        evaluation: payload.evaluation.evaluation,
-      };
+      const evaluationData = formatData(payload.evaluation);
       return {
         ...state,
         currentEvaluation: [...state.currentEvaluation, evaluationData],
       };
     }
     case GET_EVALUATIONS: {
-      console.log(action.payload)
       const currentEvaluation = action.payload.filter(evaluation => (
         evaluation.created_at === moment().format('DD MMM YY')
-      ));
+      )).map(curEval => formatData(curEval));
       return {
         ...state,
         evaluationsList: action.payload,
