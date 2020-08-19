@@ -1,3 +1,5 @@
+@import './contants';
+
 .Home {
   height: 80%;
   text-align: center;
@@ -30,5 +32,33 @@
     h4 {
       margin-bottom: 5px;
     }
+  }
+}
+
+.welcome-box {
+  margin-top: 20%;
+  .header {
+    background-color: white;
+    border: solid 1px lightgray;
+    width: 80%;
+    margin: 0 auto;
+    padding: 50px 20px;
+    h2 {
+      margin-bottom: 15px
+    }
+  }
+  .add-eval-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15% auto 0 auto;
+    background-color: #a6a6a687;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 8px solid white;
+    color: white;
+    text-decoration: none;
+    font-size: 40;
   }
 }

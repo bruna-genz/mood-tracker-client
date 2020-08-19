@@ -4,6 +4,7 @@ import moment from 'moment';
 import { FaUserCircle } from 'react-icons/fa';
 import { Redirect } from 'react-router';
 import useLogout from '../hooks/useLogout';
+import '../assets/styles/MoreMenu.scss';
 
 const MoreMenu = () => {
   const user = useSelector(state => state.auth.user);
@@ -14,12 +15,12 @@ const MoreMenu = () => {
     isLoggedIn
       ? (
         <div className="MoreMenu">
-          <p>
+          <div className="user">
             <FaUserCircle />
-            {user.username}
-          </p>
+            <h3>{user.username}</h3>
+          </div>
           <p>{`Member since:  ${moment(user.created_at).format('LL')}` }</p>
-          <button type="button" onClick={logout}>Logout</button>
+          <button className="green-button" type="button" onClick={logout}>Logout</button>
         </div>
       )
       : <Redirect to="/login" />

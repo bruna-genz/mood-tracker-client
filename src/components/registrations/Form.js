@@ -77,7 +77,7 @@ const Form = props => {
               />
             )}
 
-        <button placeholder="submit" type="submit">
+        <button className="green-button" placeholder="submit" type="submit">
           { type === 'signup' ? 'Sign Up' : 'Log In' }
         </button>
         { type === 'login'

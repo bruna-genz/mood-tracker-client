@@ -26,12 +26,12 @@ const Home = () => {
         <div className="Home">
           { !_.isEmpty(currentEvaluation) ? <CurrentEvaluation evaluation={currentEvaluation} />
             : (
-              <div>
-                <h1>Welcome back!</h1>
-                <h2>Let&apos;s add your mood for today.</h2>
-                <div>
-                  <Link to="/eval">Add</Link>
+              <div className="welcome-box">
+                <div className="header">
+                  <h2>Welcome back!</h2>
+                  <h3>Let&apos;s add your mood for today.</h3>
                 </div>
+                <Link className="add-eval-btn" to="/eval">Add</Link>
               </div>
             )}
         </div>

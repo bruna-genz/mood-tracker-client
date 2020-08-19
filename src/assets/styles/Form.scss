@@ -11,18 +11,6 @@
     input {
       padding: 0 5px;
     }
-    button {
-      background-color: $default-green;
-      height: 30px;
-      border: solid 1px $default-gray;
-      border-radius: 3px;
-      color: white;
-      &:hover {
-        border: solid 2px $default-gray;
-        background-color: #95d092;
-        cursor: pointer;
-      }
-    }
     .signup-link {
       margin-top: 10px;
       a {
