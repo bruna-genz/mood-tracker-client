@@ -4,6 +4,7 @@ import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 import CurrentEvaluation from './CurrentEvaluation';
+import '../assets/styles/Home.scss';
 
 const Home = () => {
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
@@ -11,14 +12,18 @@ const Home = () => {
   const loading = useSelector(state => state.loading);
 
   if (loading) {
-    return <p>loading</p>;
+    return (
+      <div className="Home">
+        <p>Loading...</p>
+      </div>
+    );
   }
 
   return (
     !isLoggedIn
       ? <Redirect to="/login" />
       : (
-        <div>
+        <div className="Home">
           { !_.isEmpty(currentEvaluation) ? <CurrentEvaluation evaluation={currentEvaluation} />
             : (
               <div>

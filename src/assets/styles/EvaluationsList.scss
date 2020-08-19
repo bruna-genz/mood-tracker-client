@@ -1,0 +1,42 @@
+@import './contants';
+
+.EvaluationsList {
+  li {
+    margin: 20px 0;
+    list-style: none;
+    h4 {
+      color: $default-black;
+      margin-bottom: 10px;
+      padding: 0 20px;
+    }
+    button {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+      width: 100%;
+      background-color: white;
+      border: 1px solid lightgray;
+      border-right: none;
+      border-left: none;
+      padding: 0 20px;
+      .mood-emoji-small {
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+      }
+      .button-right {
+        display: flex;
+        align-items: center;
+      }
+    }
+    .eval-details {
+      margin: 10px 0 0 20px;      
+    }
+    p {
+      font-size: 14px;
+    }
+  }
+}

@@ -14,3 +14,13 @@ body,
   background-color: $default-gray;
   height: 100%;
 }
+
+.Normal {
+  background-image: url('../images/normal.png');
+}
+.Happy {
+  background-image: url('../images/happy.png');
+}
+.Sad {
+  background-image: url('../images/sad.png');
+}

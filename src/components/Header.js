@@ -19,9 +19,9 @@ const Header = () => {
   return (
     <div className="Header">
       {location === '/'
-        ? null
+        ? <div className="back-link" />
         : (
-          <Link to="/">
+          <Link to="/" className="back-link">
             <IoIosArrowBack />
           </Link>
         )}

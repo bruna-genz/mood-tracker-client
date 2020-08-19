@@ -7,6 +7,9 @@
   align-items: center;
   padding: 10px;
   color: $default-black;
+  .back-link {
+    width: 5%;
+  }
   .current-path {
     text-align: center;
     width: 90%;
