@@ -1,3 +1,5 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable consistent-return */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 

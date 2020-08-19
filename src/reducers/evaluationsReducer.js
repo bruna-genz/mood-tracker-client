@@ -1,4 +1,5 @@
 import moment from 'moment';
+import _ from 'lodash';
 import { ADD_EVALUATION, GET_EVALUATIONS, CLEAN_EVALUATIONS } from '../constants/actionTypes';
 
 const initialState = {
@@ -29,7 +30,7 @@ const evaluationsReducer = (state = initialState, action) => {
       )).map(curEval => formatData(curEval));
       return {
         ...state,
-        evaluationsList: action.payload,
+        evaluationsList: _.sortBy(action.payload, ['id']),
         currentEvaluation,
       };
     }
