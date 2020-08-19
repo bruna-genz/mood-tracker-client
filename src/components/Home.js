@@ -14,10 +14,6 @@ const Home = () => {
     return <p>loading</p>;
   }
 
-  console.log(loading)
-  console.log(isLoggedIn)
-  console.log(currentEvaluation)
-
   return (
     !isLoggedIn
       ? <Redirect to="/login" />
