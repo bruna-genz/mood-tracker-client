@@ -9,6 +9,7 @@ import { useHistory, Redirect } from 'react-router';
 import { MOOD_ELEMENTS_URL, EVALUATIONS_URL } from '../constants/urls';
 import { addEvaluation } from '../actions';
 import '../assets/styles/Form.scss';
+import '../assets/styles/EvaluationForm.scss';
 
 const EvaluationForm = () => {
   const options = ['Very-happy', 'Happy', 'Normal', 'Sad', 'Very-sad'];
@@ -90,7 +91,7 @@ const EvaluationForm = () => {
                             setEvaluations(temp);
                           }}
                         />
-                        <label for={option} className={`${option} mood-emoji-small`} />
+                        <label htmlFor={option} className={`${option} mood-emoji-small`} />
                       </div>
                     ))}
                   </div>
@@ -100,6 +101,7 @@ const EvaluationForm = () => {
               if (input_type === 'text') {
                 return (
                   <input
+                    className="mood-extra"
                     key={id}
                     placeholder={name}
                     type="text"

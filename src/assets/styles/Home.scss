@@ -1,13 +1,13 @@
 @import './contants';
 
 .Home {
-  height: 80%;
+  overflow: scroll;
   text-align: center;
   margin: 0 15px;
 }
 
 .CurrentEvaluation {
-  margin-top: 20%;
+  margin: 40px 15px;
   .header {
     h2{
       margin-bottom: 15px;
