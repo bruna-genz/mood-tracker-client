@@ -4,21 +4,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import _ from 'lodash';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useHistory, Redirect } from 'react-router';
-import { MOOD_ELEMENTS_URL, EVALUATIONS_URL } from '../constants/urls';
-import { addEvaluation } from '../actions';
+import { MOOD_ELEMENTS_URL } from '../constants/urls';
 import '../assets/styles/Form.scss';
 import '../assets/styles/EvaluationForm.scss';
+import usePostEvaluation from '../hooks/usePostEvaluation';
 
 const EvaluationForm = () => {
   const options = ['Very-happy', 'Happy', 'Normal', 'Sad', 'Very-sad'];
   const [moodElements, setMoodElements] = useState([]);
   const [evaluations, setEvaluations] = useState({});
-  const [errors, setErrors] = useState();
   const currentEvaluation = useSelector(state => state.evaluations.currentEvaluation);
-  const dispatch = useDispatch();
   const history = useHistory();
+  const [postEvaluation, error] = usePostEvaluation();
 
   useEffect(() => {
     const getMoodElements = () => {
@@ -38,33 +37,19 @@ const EvaluationForm = () => {
     e.preventDefault();
     const evaluationsArray = Object.entries(evaluations);
 
-    let evaluation;
-    evaluationsArray.forEach(curEval => {
-      evaluation = {
+    const evs = evaluationsArray.map(curEval => (
+      {
         evaluation: curEval[1],
         mood_element_id: curEval[0],
-      };
+      }
+    ));
 
-      axios.post(EVALUATIONS_URL, { evaluation }, { withCredentials: true })
-        .then(response => {
-          if (response.data.status === 'created') {
-            dispatch(addEvaluation(response.data));
-            redirect();
-          } else {
-            setErrors(response.data.errors);
-          }
-        })
-        .catch(error => console.log('api errors:', error));
-    });
+    postEvaluation(evs, redirect);
   };
 
-  const handleErrors = () => (
-    <div>
-      <ul>
-        {errors.map(error => <li key={error}>{error}</li>)}
-      </ul>
-    </div>
-  );
+  if (error) {
+    return <Redirect to="/error" />;
+  }
 
   return (
     !_.isEmpty(currentEvaluation)
@@ -119,10 +104,6 @@ const EvaluationForm = () => {
 
             <input className="green-button" type="submit" value="Add" onClick={e => handleSubmitEvaluation(e)} />
           </form>
-
-          <div>
-            { errors ? handleErrors() : null }
-          </div>
         </div>
       )
   );
