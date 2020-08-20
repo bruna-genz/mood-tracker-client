@@ -1,16 +1,10 @@
 import React, { useEffect } from 'react';
-import axios from 'axios';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import _ from 'lodash';
-import { Redirect } from 'react-router';
-import { LOGIN_STATUS_URL } from '../constants/urls';
 import Home from './Home';
 import Login from './registrations/Login';
 import Signup from './registrations/Signup';
-import {
-  handleLogin, handleLogout, startLoading, stopLoading,
-} from '../actions';
 import Navbar from './Navbar';
 import Header from './Header';
 import '../assets/styles/App.scss';
@@ -19,30 +13,18 @@ import EvaluationsList from './EvaluationsList';
 import MoreMenu from './MoreMenu';
 import useGetEvaluations from '../hooks/useGetEvaluations';
 import Error from './Error';
+import useLoginStatus from '../hooks/useLoginStatus';
 
 const App = () => {
-  const dispatch = useDispatch();
   const getEvaluations = useGetEvaluations();
   const currentEvaluation = useSelector(state => state.evaluations.currentEvaluation);
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
   const error = useSelector(state => state.error);
+  const loginStatus = useLoginStatus();
 
   useEffect(() => {
-    const loginStatus = () => {
-      dispatch(startLoading());
-      axios.get(LOGIN_STATUS_URL, { withCredentials: true })
-        .then(response => {
-          if (response.data.logged_in) {
-            dispatch(handleLogin(response.data));
-          } else {
-            dispatch(handleLogout());
-          }
-          dispatch(stopLoading());
-        })
-        .catch(error => console.log('api errors:', error));
-    };
     loginStatus();
-  }, [dispatch]);
+  });
 
   useEffect(() => {
     if (isLoggedIn && _.isEmpty(currentEvaluation)) {
