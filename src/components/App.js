@@ -42,6 +42,7 @@ const App = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    console.log('useee')
     if (isLoggedIn && _.isEmpty(currentEvaluation)) {
       getEvaluations();
     }

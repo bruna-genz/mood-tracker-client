@@ -9,6 +9,14 @@ const EvaluationsList = props => {
   const { evaluationsArray } = props;
   const [details, showDetails] = useState('');
 
+  const moodDict = {
+    'Very-happy': 'Very happy',
+    Happy: 'Happy',
+    Normal: 'Normal',
+    Sad: 'Sad',
+    'Very-sad': 'Very sad',
+  };
+
   return (
     <ul className="EvaluationsList">
       { evaluationsArray.length === 0
@@ -29,7 +37,7 @@ const EvaluationsList = props => {
                     }}
                   >
                     <p className="button-left">
-                      {`${e.mood_element_name}: ${e.evaluation}`}
+                      {`${e.mood_element_name}: ${moodDict[e.evaluation]}`}
                     </p>
                     <div className="button-right">
                       <div className={`mood-emoji-small ${e.evaluation}`} />
