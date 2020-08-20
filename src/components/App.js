@@ -3,6 +3,7 @@ import axios from 'axios';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import _ from 'lodash';
+import { Redirect } from 'react-router';
 import { LOGIN_STATUS_URL } from '../constants/urls';
 import Home from './Home';
 import Login from './registrations/Login';
@@ -17,12 +18,14 @@ import EvaluationForm from './EvaluationForm';
 import EvaluationsList from './EvaluationsList';
 import MoreMenu from './MoreMenu';
 import useGetEvaluations from '../hooks/useGetEvaluations';
+import Error from './Error';
 
 const App = () => {
   const dispatch = useDispatch();
   const getEvaluations = useGetEvaluations();
   const currentEvaluation = useSelector(state => state.evaluations.currentEvaluation);
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  const error = useSelector(state => state.error);
 
   useEffect(() => {
     const loginStatus = () => {
@@ -47,6 +50,10 @@ const App = () => {
     }
   }, [isLoggedIn]); // eslint-disable-line
 
+  if (error) {
+    return <Error />;
+  }
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -58,6 +65,7 @@ const App = () => {
           <Route path="/eval" component={EvaluationForm} />
           <Route path="/track.it" component={EvaluationsList} />
           <Route path="/menu" component={MoreMenu} />
+          <Route path="/error" component={Error} />
         </Switch>
         <Navbar />
       </BrowserRouter>

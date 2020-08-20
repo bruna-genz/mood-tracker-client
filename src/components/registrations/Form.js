@@ -39,7 +39,7 @@ const Form = props => {
           setErrors(response.data.errors);
         }
       })
-      .catch(error => console.log('api errors:', error));
+      .catch(() => history.push('/error'));
   };
 
   const handleErrors = () => (

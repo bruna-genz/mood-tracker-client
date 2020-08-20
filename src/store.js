@@ -3,6 +3,7 @@ import rootReducer from './reducers';
 
 const initialState = {
   loading: true,
+  error: false,
   auth: {
     isLoggedIn: false,
     user: {},

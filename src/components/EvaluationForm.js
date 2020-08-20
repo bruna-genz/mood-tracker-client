@@ -101,7 +101,7 @@ const EvaluationForm = () => {
               if (input_type === 'text') {
                 return (
                   <input
-                    className="mood-extra"
+                    className="mood-extras"
                     key={id}
                     placeholder={name}
                     type="text"

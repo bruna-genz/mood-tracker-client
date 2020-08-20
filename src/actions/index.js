@@ -6,6 +6,8 @@ import {
   START_LOADING,
   STOP_LOADING,
   CLEAN_EVALUATIONS,
+  SHOW_ERROR,
+  DISMISS_ERROR
 } from '../constants/actionTypes';
 
 export const handleLogin = user => ({
@@ -37,4 +39,12 @@ export const startLoading = () => ({
 
 export const stopLoading = () => ({
   type: STOP_LOADING,
+});
+
+export const showError = () => ({
+  type: SHOW_ERROR,
+});
+
+export const dismissError = () => ({
+  type: DISMISS_ERROR,
 });

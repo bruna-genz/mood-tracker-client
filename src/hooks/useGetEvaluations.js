@@ -2,7 +2,7 @@ import axios from 'axios';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
 import { EVALUATIONS_URL } from '../constants/urls';
-import { getEvaluations } from '../actions/index';
+import { getEvaluations, showError, dismissError } from '../actions/index';
 
 const formatDate = json => json.map(el => ({
   ...el,
@@ -19,8 +19,9 @@ const useGetEvaluations = () => {
           const formatedData = formatDate(response.data.evaluations);
           dispatch(getEvaluations(formatedData));
         }
+        dispatch(dismissError());
       })
-      .catch(error => console.log('api errors:', error));
+      .catch(() => dispatch(showError()));
   };
 
   return getList;
