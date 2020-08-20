@@ -7,7 +7,7 @@ import { IoIosArrowDown } from 'react-icons/io';
 
 const EvaluationsList = props => {
   const { evaluationsArray } = props;
-  const [details, showDetails] = useState(false);
+  const [details, showDetails] = useState('');
 
   return (
     <ul className="EvaluationsList">
@@ -17,9 +17,17 @@ const EvaluationsList = props => {
           <li key={evaluations[0]}>
             <h4>{evaluations[0]}</h4>
             {evaluations[1].map(e => {
+              const date = evaluations[0];
               if (e.mood_element_id === 1) {
                 return (
-                  <button type="button" key={e.id} onClick={() => showDetails(!details)}>
+                  <button
+                    type="button"
+                    key={e.id}
+                    onClick={() => {
+                      const detail = details === date ? '' : date;
+                      showDetails(detail);
+                    }}
+                  >
                     <p className="button-left">
                       {`${e.mood_element_name}: ${e.evaluation}`}
                     </p>
@@ -31,7 +39,7 @@ const EvaluationsList = props => {
                 );
               }
 
-              if (details) {
+              if (details === date) {
                 return (
                   <div className="eval-details" key={e.id}>
                     <h5>{e.mood_element_name}</h5>
