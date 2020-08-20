@@ -45,7 +45,7 @@ const App = () => {
     if (isLoggedIn && _.isEmpty(currentEvaluation)) {
       getEvaluations();
     }
-  }, [isLoggedIn, getEvaluations, currentEvaluation]);
+  }, [isLoggedIn]);
 
   return (
     <div className="App">
