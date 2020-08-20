@@ -8,9 +8,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Redirect } from 'react-router';
 import { MOOD_ELEMENTS_URL, EVALUATIONS_URL } from '../constants/urls';
 import { addEvaluation } from '../actions';
+import '../assets/styles/Form.scss';
 
 const EvaluationForm = () => {
-  const options = ['Very happy', 'Happy', 'Normal', 'Sad', 'Very sad'];
+  const options = ['Very-happy', 'Happy', 'Normal', 'Sad', 'Very-sad'];
   const [moodElements, setMoodElements] = useState([]);
   const [evaluations, setEvaluations] = useState({});
   const [errors, setErrors] = useState();
@@ -68,8 +69,9 @@ const EvaluationForm = () => {
     !_.isEmpty(currentEvaluation)
       ? <Redirect to="/" />
       : (
-        <div className="EvaluationForm">
-          <form>
+        <div className="EvaluationForm form-container">
+          <h3>Add your mood evaluation:</h3>
+          <form className="Form">
             {moodElements.map(element => {
               const { input_type, id, name } = element;
               if (input_type === 'option') {
@@ -79,6 +81,7 @@ const EvaluationForm = () => {
                       <div className="radio" key={option}>
                         <input
                           type="radio"
+                          id={option}
                           value={option}
                           checked={evaluations[id] === option}
                           onChange={e => {
@@ -87,7 +90,7 @@ const EvaluationForm = () => {
                             setEvaluations(temp);
                           }}
                         />
-                        {option}
+                        <label for={option} className={`${option} mood-emoji-small`} />
                       </div>
                     ))}
                   </div>
@@ -112,7 +115,7 @@ const EvaluationForm = () => {
               }
             })}
 
-            <input type="submit" value="Add" onClick={e => handleSubmitEvaluation(e)} />
+            <input className="green-button" type="submit" value="Add" onClick={e => handleSubmitEvaluation(e)} />
           </form>
 
           <div>

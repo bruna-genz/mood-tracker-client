@@ -1,6 +1,9 @@
 @import './contants';
 
 .EvaluationsList {
+  .eval-message {
+    margin: 20px;
+  }
   li {
     margin: 20px 0;
     list-style: none;
@@ -20,13 +23,6 @@
       border-right: none;
       border-left: none;
       padding: 0 20px;
-      .mood-emoji-small {
-        background-size: contain;
-        background-repeat: no-repeat;
-        width: 40px;
-        height: 40px;
-        margin-right: 10px;
-      }
       .button-right {
         display: flex;
         align-items: center;

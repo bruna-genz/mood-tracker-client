@@ -11,35 +11,37 @@ const EvaluationsList = props => {
 
   return (
     <ul className="EvaluationsList">
-      { evaluationsArray.map(evaluations => (
-        <li key={evaluations[0]}>
-          <h4>{evaluations[0]}</h4>
-          {evaluations[1].map(e => {
-            if (e.mood_element_id === 1) {
-              return (
-                <button type="button" key={e.id} onClick={() => showDetails(!details)}>
-                  <p className="button-left">
-                    {`${e.mood_element_name}: ${e.evaluation}`}
-                  </p>
-                  <div className="button-right">
-                    <div className={`mood-emoji-small ${e.evaluation}`} />
-                    <IoIosArrowDown />
-                  </div>
-                </button>
-              );
-            }
+      { evaluationsArray.length === 0
+        ? <p className="eval-message">You don&apos;t have evaluations yet.</p>
+        : evaluationsArray.map(evaluations => (
+          <li key={evaluations[0]}>
+            <h4>{evaluations[0]}</h4>
+            {evaluations[1].map(e => {
+              if (e.mood_element_id === 1) {
+                return (
+                  <button type="button" key={e.id} onClick={() => showDetails(!details)}>
+                    <p className="button-left">
+                      {`${e.mood_element_name}: ${e.evaluation}`}
+                    </p>
+                    <div className="button-right">
+                      <div className={`mood-emoji-small ${e.evaluation}`} />
+                      <IoIosArrowDown />
+                    </div>
+                  </button>
+                );
+              }
 
-            if (details) {
-              return (
-                <div className="eval-details" key={e.id}>
-                  <h5>{e.mood_element_name}</h5>
-                  <p>{e.evaluation}</p>
-                </div>
-              );
-            }
-          })}
-        </li>
-      ))}
+              if (details) {
+                return (
+                  <div className="eval-details" key={e.id}>
+                    <h5>{e.mood_element_name}</h5>
+                    <p>{e.evaluation}</p>
+                  </div>
+                );
+              }
+            })}
+          </li>
+        ))}
     </ul>
   );
 };
