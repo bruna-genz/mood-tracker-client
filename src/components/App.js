@@ -14,7 +14,7 @@ import Navbar from './Navbar';
 import Header from './Header';
 import '../assets/styles/App.scss';
 import EvaluationForm from './EvaluationForm';
-import EvaluationsContainer from './EvaluationsContainer';
+import EvaluationsList from './EvaluationsList';
 import MoreMenu from './MoreMenu';
 import useGetEvaluations from '../hooks/useGetEvaluations';
 
@@ -42,11 +42,10 @@ const App = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    console.log('useee')
     if (isLoggedIn && _.isEmpty(currentEvaluation)) {
       getEvaluations();
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn]); // eslint-disable-line
 
   return (
     <div className="App">
@@ -57,7 +56,7 @@ const App = () => {
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <Route path="/eval" component={EvaluationForm} />
-          <Route path="/track.it" component={EvaluationsContainer} />
+          <Route path="/track.it" component={EvaluationsList} />
           <Route path="/menu" component={MoreMenu} />
         </Switch>
         <Navbar />

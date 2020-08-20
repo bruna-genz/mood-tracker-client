@@ -1,12 +1,14 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable consistent-return */
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import _ from 'lodash';
+import { useSelector } from 'react-redux';
 import '../assets/styles/EvaluationsList.scss';
 import { IoIosArrowDown } from 'react-icons/io';
 
-const EvaluationsList = props => {
-  const { evaluationsArray } = props;
+const EvaluationsList = () => {
+  const evaluationsList = useSelector(state => state.evaluations.evaluationsList);
+  const evaluationsArray = Object.entries(_.mapValues(_.groupBy(evaluationsList, 'created_at')));
   const [details, showDetails] = useState('');
 
   const moodDict = {
@@ -60,10 +62,6 @@ const EvaluationsList = props => {
         ))}
     </ul>
   );
-};
-
-EvaluationsList.propTypes = {
-  evaluationsArray: PropTypes.instanceOf(Array).isRequired,
 };
 
 export default EvaluationsList;
