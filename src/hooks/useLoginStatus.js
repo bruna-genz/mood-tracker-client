@@ -25,7 +25,7 @@ const useLoginStatus = () => {
         dispatch(stopLoading());
         dispatch(dismissError());
       })
-      .catch(() => dispatch(showError()));
+      .catch(error => console.log(error));
   };
 
   return loginStatus;
