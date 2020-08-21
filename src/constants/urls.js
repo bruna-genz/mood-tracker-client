@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3001/';
+const BASE_URL = 'https://mood-tracker-api.herokuapp.com/';
 
 const LOGIN_STATUS_URL = `${BASE_URL}logged_in`;
 const SIGNUP_URL = `${BASE_URL}users`;

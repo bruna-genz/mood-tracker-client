@@ -60,7 +60,7 @@ const EvaluationForm = () => {
           <form className="Form">
             {moodElements.map(element => {
               const { input_type, id, name } = element;
-              if (input_type === 'option') {
+              if (input_type === 'options') {
                 return (
                   <div className="mood-select" key={id}>
                     { options.map(option => (
