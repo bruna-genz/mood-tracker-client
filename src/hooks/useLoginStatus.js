@@ -6,7 +6,7 @@ import {
   stopLoading,
   handleLogin,
   handleLogout,
-  showError,
+  //showError,
   dismissError,
 } from '../actions/index';
 
@@ -25,6 +25,7 @@ const useLoginStatus = () => {
         dispatch(stopLoading());
         dispatch(dismissError());
       })
+      // eslint-disable-next-line no-console
       .catch(error => console.log(error));
   };
 
