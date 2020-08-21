@@ -28,6 +28,7 @@ const evaluationsReducer = (state = initialState, action) => {
       const currentEvaluation = action.payload.filter(evaluation => (
         evaluation.created_at === moment().format('DD MMM YY')
       )).map(curEval => formatData(curEval));
+
       return {
         ...state,
         evaluationsList: _.sortBy(action.payload, ['id']),

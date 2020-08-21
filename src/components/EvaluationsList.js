@@ -7,8 +7,9 @@ import '../assets/styles/EvaluationsList.scss';
 import { IoIosArrowDown } from 'react-icons/io';
 
 const EvaluationsList = () => {
-  const evaluationsList = useSelector(state => state.evaluations.evaluationsList);
-  const evaluationsArray = Object.entries(_.mapValues(_.groupBy(evaluationsList, 'created_at')));
+  const rawEvaluationsList = useSelector(state => state.evaluations.evaluationsList);
+  const evaluationsList = Object.entries(_.groupBy(rawEvaluationsList, 'created_at'));
+  const sortedEvaluationsList = evaluationsList.sort((a, b) => b - a);
   const [details, showDetails] = useState('');
 
   const moodDict = {
@@ -21,9 +22,9 @@ const EvaluationsList = () => {
 
   return (
     <ul className="EvaluationsList">
-      { evaluationsArray.length === 0
+      { sortedEvaluationsList.length === 0
         ? <p className="eval-message">You don&apos;t have evaluations yet.</p>
-        : evaluationsArray.map(evaluations => (
+        : sortedEvaluationsList.map(evaluations => (
           <li key={evaluations[0]}>
             <h4>{evaluations[0]}</h4>
             {evaluations[1].map(e => {
