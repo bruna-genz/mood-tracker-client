@@ -2,7 +2,9 @@ import axios from 'axios';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
 import { EVALUATIONS_URL } from '../constants/urls';
-import { getEvaluations, showError, dismissError } from '../actions/index';
+import {
+  getEvaluations, showError, dismissError, startLoading, stopLoading,
+} from '../actions/index';
 
 const formatDate = json => json.map(el => ({
   ...el,
@@ -13,6 +15,7 @@ const useGetEvaluations = () => {
   const dispatch = useDispatch();
 
   const getList = () => {
+    dispatch(startLoading());
     axios.get(EVALUATIONS_URL, { withCredentials: true })
       .then(response => {
         if (response.data.evaluations) {
@@ -20,8 +23,12 @@ const useGetEvaluations = () => {
           dispatch(getEvaluations(formatedData));
         }
         dispatch(dismissError());
+        dispatch(stopLoading());
       })
-      .catch(() => dispatch(showError()));
+      .catch(() => {
+        dispatch(showError());
+        dispatch(stopLoading());
+      });
   };
 
   return getList;
