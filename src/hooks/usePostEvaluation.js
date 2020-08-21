@@ -5,10 +5,12 @@ import { EVALUATIONS_URL } from '../constants/urls';
 import { addEvaluation } from '../actions';
 import '../assets/styles/Form.scss';
 import '../assets/styles/EvaluationForm.scss';
+import useGetEvaluations from './useGetEvaluations';
 
 const usePostEvaluation = () => {
   const dispatch = useDispatch();
   const [error, setError] = useState(false);
+  const getEvaluations = useGetEvaluations();
 
   const postEvaluation = (evaluations, completion) => {
     Promise.all(
@@ -17,6 +19,7 @@ const usePostEvaluation = () => {
           .then(response => {
             if (response.data.status === 'created') {
               dispatch(addEvaluation(response.data));
+              getEvaluations();
             } else {
               throw Error('One of the evals failed');
             }
