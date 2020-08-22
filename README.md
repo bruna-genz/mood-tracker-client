@@ -1,68 +1,89 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">
+  OhMyMood!
+</h1>
 
-## Available Scripts
+<h4 align="center"><a href="http://localhost:3000/login">Live version >></a></h4>
 
-In the project directory, you can run:
+## Table of Contents
 
-### `yarn start`
+* [About the project](https://github.com/bruna-genz/mood-tracker-client#about-the-project)
+* [About OhMyMood!](https://github.com/bruna-genz/mood-tracker-client#about-ohmymood!)
+  * [Home](https://github.com/bruna-genz/mood-tracker-client#home)
+  * [Mood evaluation form](https://github.com/bruna-genz/mood-tracker-client#mood-evaluation-form)
+  * [Mood progress](https://github.com/bruna-genz/mood-tracker-client#mood-evaluations-list)
+  * [Future features](https://github.com/bruna-genz/mood-tracker-client#future-features)
+* [Built with](https://github.com/bruna-genz/mood-tracker-client#built-with)
+* [Installation](https://github.com/bruna-genz/mood-tracker-client#installation)
+* [Testing](https://github.com/bruna-genz/mood-tracker-client#testing)
+* [Author](https://github.com/bruna-genz/mood-tracker-client#author)
+* [Acknowledgments](https://github.com/bruna-genz/mood-tracker-client#acknowlegdemnts)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## About the project
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+This project is the Final Capstone from the Microverse Technical Curriculum. Its purpose was to create a real-world-like project, built with business specifications, based on a tracking mobile application. 
 
-### `yarn test`
+The front-end was built with React, using Redux to manage the internal state. For the back-end I used Ruby on Rails, its repository can be found [here](https://github.com/bruna-genz/mood-tracker-api).
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The project's original instructions can be found [here](https://www.notion.so/Catalogue-of-Statistics-72446e7fa33c403a9b6a0bc1de5c6cf5).
 
-### `yarn build`
+## About OhMyMood!
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+OhMyMood! is a mobile application to track moods and emotions. According to studies, understanding your moods is helpful to manage them and feel better fast. If a person is more aware of their mood, they may better manage their lifestyles choices, make more informed decisions, prevent or avoid triggers of negative moods, resulting in a better quality of life.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+To use OhMyMood!, we require the user to sign up or log in. Every day, they can evaluate their mood with 5 different levels, represented by emojis. Also, they will have three questions to answer to better evaluate their emotions: “What went well today?”, “What went badly?”, and “What did your learn?”. On the progress page, the user can check and compare the mood evaluations from the past.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Home
 
-### `yarn eject`
+The home page has two states: if the user hasn't evaluate their mood that they, it will display a button for the evaluation form (first image). Otherwise, it will show the mood evaluation for that day (second image).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<div align="center"><img src="./src/assets/images/home.png" alt="OhMyMood! home page with button to form"></div>
+<div align="center"><img src="./src/assets/images/home2.png" alt="OhMyMood! home page with current mood"></div>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Mood evaluation form
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+To evaluate their mood, the user selects the emoji that represents their current mood: Very happy, happy, normal, sad, and very sad. Also, they should answer the three questions, which will provide a better understanding of emotions and triggers.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<div align="center"><img src="./src/assets/images/home.png" alt="Mood evaluation form"></div>
 
-## Learn More
+### Mood progress
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+In the evaluations list, all the user can see all recorded moods. This way, they can compare them and see the mood progress. By clicking in one of the recorded moods, it will show a list of the remaining answers for that day.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<div align="center"><img src="./src/assets/images/home.png" alt="OhMyMood! home page"></div>
 
-### Code Splitting
+### Future features
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+- Possibility to edit current day mood.
+- Statistics page, which will show more details about mood progression.
+- More features to the menu page: edit user information, profile image. 
 
-### Analyzing the Bundle Size
+## Built With
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+- HTML5; 
+- CSS3;
+- JavaScript;
+- React;
+- Redux;
+- Webpack;
+- Heroku.
 
-### Making a Progressive Web App
+## Installation
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+To install a local version of this app, download or clone the project [here](https://github.com/bruna-genz/mood-tracker-client.git), then navigate to the project's directory from the terminal and run the following commands:
+- `npm i`
+- `npm start`
 
-### Advanced Configuration
+## Author
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+:woman: **Bruna Genz**
 
-### Deployment
+- Github: [@bruna-genz](https://github.com/bruna-genz)
+- Twitter: [@Bruna_GK](https://twitter.com/Bruna_GK)
+- Linkedin: [Bruna Genz](https://www.linkedin.com/in/brunagenz/)
+- Email: brunagenz92@gmail.com
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+## Acknowledgments
 
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- [Gregoire Vella on Behance](https://www.behance.net/gregoirevella) for the design idea.
+- [Alejandro Sabogal](https://medium.com/@asabogal) for the amazing tutorial about React and Rails user authentication.
+- [Microverse](https://www.microverse.org/) team, for being the guide on this exciting and exhaustive journey.
