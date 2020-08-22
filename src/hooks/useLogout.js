@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { LOGOUT_URL } from '../constants/urls';
-import { handleLogout, cleanEvaluations } from '../actions';
+import { handleLogout, cleanEvaluations, showError } from '../actions';
 
 const useLogout = () => {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const useLogout = () => {
         dispatch(cleanEvaluations());
         history.push('/');
       })
-      .catch(error => console.log(error));
+      .catch(() => dispatch(showError()));
   };
 
   return { logout };

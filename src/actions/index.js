@@ -7,7 +7,7 @@ import {
   STOP_LOADING,
   CLEAN_EVALUATIONS,
   SHOW_ERROR,
-  DISMISS_ERROR
+  DISMISS_ERROR,
 } from '../constants/actionTypes';
 
 export const handleLogin = user => ({

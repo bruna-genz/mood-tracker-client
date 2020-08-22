@@ -8,16 +8,20 @@
     margin: 10px auto;
     justify-content: space-between;
     height: 140px;
+
     input {
       padding: 0 5px;
     }
+
     .signup-link {
       margin-top: 10px;
+
       a {
         color: black;
       }
     }
   }
+
   .errors-list {
     text-align: center;
     font-size: 15px;

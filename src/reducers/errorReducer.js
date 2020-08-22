@@ -1,4 +1,4 @@
-import { SHOW_ERROR, DISMISS_ERROR } from "../constants/actionTypes";
+import { SHOW_ERROR, DISMISS_ERROR } from '../constants/actionTypes';
 
 const errorReducer = (state = false, action) => {
   switch (action.type) {
