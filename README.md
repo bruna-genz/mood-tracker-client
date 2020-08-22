@@ -2,7 +2,7 @@
   OhMyMood!
 </h1>
 
-<h4 align="center"><a href="http://localhost:3000/login">Live version >></a></h4>
+<h4 align="center"><a href="https://app.netlify.com/sites/ohmymood/overview">Live version >></a></h4>
 
 ## Table of Contents
 
@@ -53,6 +53,7 @@ In the evaluations list, all the user can see all recorded moods. This way, they
 
 ### Future features
 
+- Design for larger screens.
 - Possibility to edit current day mood.
 - Statistics page, which will show more details about mood progression.
 - More features to the menu page: edit user information, profile image. 
