@@ -1,4 +1,5 @@
 import React from 'react';
+import '../assets/styles/Error.scss';
 
 const Error = () => (
   <div className="Error">
