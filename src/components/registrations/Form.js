@@ -1,20 +1,17 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { SIGNUP_URL, LOGIN_URL } from '../../constants/urls';
-import { handleLogin } from '../../actions';
 import '../../assets/styles/Form.scss';
+import useAuthentication from '../../hooks/useAuthentication';
 
 const Form = props => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  const [errors, setErrors] = useState('');
   const history = useHistory();
-  const dispatch = useDispatch();
   const { type } = props;
+  const [authenticate, errors] = useAuthentication();
 
   const redirect = () => {
     history.push('/');
@@ -30,16 +27,7 @@ const Form = props => {
 
     const URL = type === 'signup' ? SIGNUP_URL : LOGIN_URL;
 
-    axios.post(URL, { user }, { withCredentials: true })
-      .then(response => {
-        if (response.data.status === 'created' || response.data.logged_in) {
-          dispatch(handleLogin(response.data));
-          redirect();
-        } else {
-          setErrors(response.data.errors);
-        }
-      })
-      .catch(() => history.push('/error'));
+    authenticate(URL, user, redirect);
   };
 
   const handleErrors = () => (
