@@ -2,7 +2,7 @@
   OhMyMood!
 </h1>
 
-<h4 align="center"><a href="https://app.netlify.com/sites/ohmymood/overview">Live version >></a></h4>
+<h4 align="center"><a href="https://ohmymood.netlify.app">Live version >></a></h4>
 
 ## Table of Contents
 
