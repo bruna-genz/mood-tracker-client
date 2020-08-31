@@ -17,6 +17,7 @@ const EvaluationForm = () => {
   const [moodElements, setMoodElements] = useState([]);
   const [evaluations, setEvaluations] = useState({});
   const currentEvaluation = useSelector(state => state.evaluations.currentEvaluation);
+  const currentUser = useSelector(state => state.auth.user.id);
   const history = useHistory();
   const [postEvaluation, error] = usePostEvaluation();
 
@@ -40,6 +41,7 @@ const EvaluationForm = () => {
 
     const evs = evaluationsArray.map(curEval => (
       {
+        currentUser,
         evaluation: curEval[1],
         mood_element_id: curEval[0],
       }
