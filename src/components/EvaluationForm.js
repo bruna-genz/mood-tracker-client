@@ -41,7 +41,7 @@ const EvaluationForm = () => {
 
     const evs = evaluationsArray.map(curEval => (
       {
-        currentUser,
+        user_id: currentUser,
         evaluation: curEval[1],
         mood_element_id: curEval[0],
       }
