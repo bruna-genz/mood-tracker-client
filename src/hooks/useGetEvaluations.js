@@ -1,6 +1,6 @@
 import axios from 'axios';
 import moment from 'moment';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { EVALUATIONS_URL } from '../constants/urls';
 import {
   getEvaluations, showError, dismissError, startLoading, stopLoading,
@@ -13,10 +13,12 @@ const formatDate = json => json.map(el => ({
 
 const useGetEvaluations = () => {
   const dispatch = useDispatch();
+  const userId = useSelector(state => state.auth.user.id);
+  const url = `${EVALUATIONS_URL}/${userId}`;
 
   const getList = () => {
     dispatch(startLoading());
-    axios.get(EVALUATIONS_URL, { withCredentials: true })
+    axios.get(url, { withCredentials: true })
       .then(response => {
         if (response.data.evaluations) {
           const formatedData = formatDate(response.data.evaluations);
