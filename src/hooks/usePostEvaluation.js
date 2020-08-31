@@ -14,20 +14,17 @@ const usePostEvaluation = () => {
 
   const postEvaluation = (evaluations, completion) => {
     Promise.all(
-      evaluations.map(evaluation => {
-        console.log(evaluation);
-        return (
-          axios.post(EVALUATIONS_URL, { evaluation }, { withCredentials: true })
-            .then(response => {
-              if (response.data.status === 'created') {
-                dispatch(addEvaluation(response.data));
-                getEvaluations();
-              } else {
-                throw Error('One of the evals failed');
-              }
-            })
-        );
-      }),
+      evaluations.map(evaluation => (
+        axios.post(EVALUATIONS_URL, { evaluation }, { withCredentials: true })
+          .then(response => {
+            if (response.data.status === 'created') {
+              dispatch(addEvaluation(response.data));
+              getEvaluations();
+            } else {
+              throw Error('One of the evals failed');
+            }
+          })
+      )),
     )
       .then(() => {
         setError(false);
