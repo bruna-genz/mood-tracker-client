@@ -1,0 +1,58 @@
+@import './contants';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $default-font;
+}
+
+html,
+body,
+#root,
+.App {
+  background-color: $default-gray;
+  height: 100%;
+}
+
+.Normal {
+  background-image: url('../images/normal.png');
+}
+
+.Very-happy {
+  background-image: url('../images/very-happy.png');
+}
+
+.Happy {
+  background-image: url('../images/happy.png');
+}
+
+.Very-sad {
+  background-image: url('../images/very-sad.png');
+}
+
+.Sad {
+  background-image: url('../images/sad.png');
+}
+
+.green-button {
+  background-color: $default-green;
+  height: 30px;
+  border: solid 1px $default-gray;
+  border-radius: 3px;
+  color: white;
+
+  &:hover {
+    border: solid 2px $default-gray;
+    background-color: #95d092;
+    cursor: pointer;
+  }
+}
+
+.mood-emoji-small {
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
