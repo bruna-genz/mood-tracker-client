@@ -7,16 +7,15 @@
 ## Table of Contents
 
 * [About the project](https://github.com/bruna-genz/mood-tracker-client#about-the-project)
-* [About OhMyMood!](https://github.com/bruna-genz/mood-tracker-client#about-ohmymood!)
+* [About OhMyMood!](https://github.com/bruna-genz/mood-tracker-client#about-ohmymood)
   * [Home](https://github.com/bruna-genz/mood-tracker-client#home)
   * [Mood evaluation form](https://github.com/bruna-genz/mood-tracker-client#mood-evaluation-form)
-  * [Mood progress](https://github.com/bruna-genz/mood-tracker-client#mood-evaluations-list)
+  * [Mood progress](https://github.com/bruna-genz/mood-tracker-client#mood-progress)
   * [Future features](https://github.com/bruna-genz/mood-tracker-client#future-features)
 * [Built with](https://github.com/bruna-genz/mood-tracker-client#built-with)
 * [Installation](https://github.com/bruna-genz/mood-tracker-client#installation)
-* [Testing](https://github.com/bruna-genz/mood-tracker-client#testing)
 * [Author](https://github.com/bruna-genz/mood-tracker-client#author)
-* [Acknowledgments](https://github.com/bruna-genz/mood-tracker-client#acknowlegdemnts)
+* [Acknowledgments](https://github.com/bruna-genz/mood-tracker-client#acknowledgments)
 
 ## About the project
 
