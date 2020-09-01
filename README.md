@@ -43,13 +43,13 @@ The home page has two states: if the user hasn't evaluate their mood that they, 
 
 To evaluate their mood, the user selects the emoji that represents their current mood: Very happy, happy, normal, sad, and very sad. Also, they should answer the three questions, which will provide a better understanding of emotions and triggers.
 
-<div align="center"><img src="./src/assets/images/home.png" alt="Mood evaluation form"></div>
+<div align="center"><img src="./src/assets/images/add-ev.png" alt="Mood evaluation form"></div>
 
 ### Mood progress
 
 In the evaluations list, all the user can see all recorded moods. This way, they can compare them and see the mood progress. By clicking in one of the recorded moods, it will show a list of the remaining answers for that day.
 
-<div align="center"><img src="./src/assets/images/home.png" alt="OhMyMood! home page"></div>
+<div align="center"><img src="./src/assets/images/ev-list.png" alt="OhMyMood! home page"></div>
 
 ### Future features
 
