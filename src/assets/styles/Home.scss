@@ -1,0 +1,74 @@
+@import './contants';
+
+.Home {
+  overflow: scroll;
+  text-align: center;
+  margin: 0 15px;
+}
+
+.CurrentEvaluation {
+  margin: 40px 15px;
+
+  .header {
+    h2 {
+      margin-bottom: 15px;
+    }
+  }
+
+  .mood-emoji {
+    height: 90px;
+    margin: 40px auto;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: white;
+    width: 90px;
+    border-radius: 50%;
+  }
+
+  .evaluation-el {
+    margin: 5px 0;
+    background-color: white;
+    padding: 5px;
+    border: solid 1px lightgray;
+    border-radius: 5px;
+
+    h4 {
+      margin-bottom: 5px;
+    }
+
+    p {
+      font-size: 13px;
+    }
+  }
+}
+
+.welcome-box {
+  margin-top: 20%;
+
+  .header {
+    background-color: white;
+    border: solid 1px lightgray;
+    width: 80%;
+    margin: 0 auto;
+    padding: 50px 20px;
+
+    h2 {
+      margin-bottom: 15px;
+    }
+  }
+
+  .add-eval-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15% auto 0 auto;
+    background-color: #a6a6a687;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 8px solid white;
+    color: white;
+    text-decoration: none;
+  }
+}

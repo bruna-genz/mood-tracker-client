@@ -1,0 +1,18 @@
+@import './contants';
+
+.Navbar {
+  background-color: $default-black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 50px;
+
+  svg {
+    fill: $default-gray;
+    stroke: $default-gray;
+  }
+}
