@@ -29,7 +29,7 @@ The project's original instructions can be found [here](https://www.notion.so/Ca
 
 OhMyMood! is a mobile application to track moods and emotions. According to studies, understanding your moods is helpful to manage them and feel better fast. If a person is more aware of their mood, they may better manage their lifestyles choices, make more informed decisions, prevent or avoid triggers of negative moods, resulting in a better quality of life.
 
-To use OhMyMood!, we require the user to sign up or log in. Every day, they can evaluate their mood with 5 different levels, represented by emojis. Also, they will have three questions to answer to better evaluate their emotions: “What went well today?”, “What went badly?”, and “What did your learn?”. On the progress page, the user can check and compare the mood evaluations from the past.
+To use OhMyMood!, we require the user to sign up or log in. Every day, they can evaluate their mood with 5 different levels, represented by emojis. Also, they will have three questions to answer to better evaluate their emotions: “What went well today?”, “What went badly?”, and “What did you learn?”. On the progress page, the user can check and compare the mood evaluations from the past.
 
 ### Home
 
